@@ -45,6 +45,7 @@ const Gameboard = () => {
         return true;
     };
 
+    // Place ship within the gameboard
     const placeShip = (ship, x, y) => {
         const direction = ship.getDirection();
         const length = ship.getLength();
@@ -56,11 +57,30 @@ const Gameboard = () => {
 
         for (let i = 0; i < length; i++) {
             const [hor, ver] = getCoords(x, y, i, direction);
-            board[hor][ver] = "ship";
+            board[hor][ver] = ship;
         }
     };
 
-    return { getBoard, checkShipPlacement, checkShipCollision, placeShip };
+    // Determine whether or not attack hit a ship, if yes send hit() fn
+    // to correct ship, otherwise record missed shot.
+    const receiveAttack = (x, y) => {
+        if (board[x][y] === null) {
+            return (board[x][y] = "miss");
+        } else if (board[x][y] === "hit") {
+            return;
+        } else {
+            board[x][y].hit();
+            return (board[x][y] = "hit");
+        }
+    };
+
+    return {
+        getBoard,
+        checkShipPlacement,
+        checkShipCollision,
+        placeShip,
+        receiveAttack,
+    };
 };
 
 export default Gameboard;

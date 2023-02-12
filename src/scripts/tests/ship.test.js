@@ -2,19 +2,20 @@
 import Ship from "../ship";
 
 describe("Ship factory", () => {
-    const myShip = Ship(4);
-
-    beforeAll(() => {
-        myShip.hit();
-        myShip.hit();
-        myShip.hit();
-    });
-
-    test("Hit function", () => {
-        expect(myShip.hit()).toEqual(3);
+    test("hit function", () => {
+        const ship = Ship(3);
+        ship.hit();
+        expect(ship.hit()).toBe(2);
+        expect(ship.hit()).toBe(3);
+        expect(ship.hit()).toBeTruthy();
     });
 
     test("isSunk function", () => {
-        expect(myShip.isSunk()).toBeTruthy();
+        const ship = Ship(3);
+        ship.hit();
+        expect(ship.isSunk()).toBeFalsy();
+        ship.hit();
+        ship.hit();
+        expect(ship.isSunk()).toBeTruthy();
     });
 });

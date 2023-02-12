@@ -10,9 +10,13 @@ const Ship = (length) => {
         return direction === "hor" ? (direction = "ver") : (direction = "hor");
     };
 
-    const hit = () => hitCounter++;
+    const hit = () => {
+        hitCounter++;
+        if (isSunk === true) return isSunk;
+        return hitCounter;
+    };
 
-    const isSunk = () => (length >= hitCounter ? true : false);
+    const isSunk = () => (hitCounter >= length ? true : false);
 
     return { getLength, getDirection, changeDirection, hit, isSunk };
 };
