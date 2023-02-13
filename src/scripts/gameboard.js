@@ -1,8 +1,10 @@
 const Gameboard = () => {
     // Create a board 10 x 10
-    let board = Array(10)
+    const board = Array(10)
         .fill(null)
         .map(() => Array(10).fill(null));
+
+    const fleet = [];
 
     const getBoard = () => board;
 
@@ -59,6 +61,7 @@ const Gameboard = () => {
             const [hor, ver] = getCoords(x, y, i, direction);
             board[hor][ver] = ship;
         }
+        fleet.push(ship);
     };
 
     // Determine whether or not attack hit a ship, if yes send hit() fn
@@ -74,12 +77,24 @@ const Gameboard = () => {
         }
     };
 
+    // Call isSunk() function on each ship and determine wheter or not all ships
+    // been sunk
+    const allShipsSunk = () => {
+        for (let i = 0; i < fleet.length; i++) {
+            if (fleet[i].isSunk() === false) {
+                return false;
+            }
+        }
+        return true;
+    };
+
     return {
         getBoard,
         checkShipPlacement,
         checkShipCollision,
         placeShip,
         receiveAttack,
+        allShipsSunk,
     };
 };
 

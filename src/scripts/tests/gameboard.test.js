@@ -54,4 +54,21 @@ describe("Gameboard factory", () => {
         expect(board.receiveAttack(2, 1));
         expect(ship.isSunk()).toBeTruthy();
     });
+
+    test("Check if all ships have been sunk", () => {
+        const board = Gameboard();
+        const ship1 = Ship(2);
+        const ship2 = Ship(2);
+        board.placeShip(ship1, 0, 1);
+        board.placeShip(ship2, 0, 2);
+        board.receiveAttack(0, 1);
+        board.receiveAttack(1, 1);
+        board.receiveAttack(0, 2);
+        expect(board.allShipsSunk()).toBeFalsy();
+        board.receiveAttack(1, 2);
+        expect(board.allShipsSunk()).toBeTruthy();
+        const ship3 = Ship(2);
+        board.placeShip(ship3, 0, 3);
+        expect(board.allShipsSunk()).toBeFalsy();
+    });
 });
