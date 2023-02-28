@@ -70,10 +70,11 @@ const Gameboard = () => {
         if (board[x][y] === null) {
             return (board[x][y] = "miss");
         } else if (board[x][y] === "hit") {
-            return;
+            return false;
         } else {
             board[x][y].hit();
-            return (board[x][y] = "hit");
+            board[x][y] = "hit";
+            return true;
         }
     };
 

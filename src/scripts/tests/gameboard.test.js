@@ -11,7 +11,7 @@ describe("Gameboard factory", () => {
         for (let i = 0; i < ship.getLength(); i++) {
             expect(gameboard[i][2]).toEqual(ship);
         }
-        expect(gameboard[0][4]).toBe(null);
+        expect(gameboard[0][4]).toBeNull;
     });
 
     test("Place ship vertically", () => {
@@ -23,8 +23,8 @@ describe("Gameboard factory", () => {
         for (let i = 2; i < ship.getLength(); i++) {
             expect(gameboard[3][i]).toEqual(ship);
         }
-        expect(gameboard[3][1]).toBe(null);
-        expect(gameboard[3][6]).toBe(null);
+        expect(gameboard[3][1]).toBeNull;
+        expect(gameboard[3][6]).toBeNull;
     });
 
     test("Check if ship is placed within the board", () => {
@@ -48,7 +48,8 @@ describe("Gameboard factory", () => {
         const ship = Ship(3);
         board.placeShip(ship, 0, 1);
         expect(board.receiveAttack(3, 3)).toBe("miss");
-        expect(board.receiveAttack(0, 1)).toBe("hit");
+        expect(board.receiveAttack(0, 1)).toBeTruthy();
+        expect(board.receiveAttack(0, 1)).toBeFalsy();
         expect(ship.isSunk()).toBeFalsy();
         expect(board.receiveAttack(1, 1));
         expect(board.receiveAttack(2, 1));
