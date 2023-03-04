@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-import Gameboard from "../gameboard.js";
-import Ship from "../ship.js";
-import Player from "../player.js";
+import Gameboard from "../factories/gameboard.js";
+import Ship from "../factories/ship.js";
+import Player from "../factories/player.js";
 
 describe("Player factory", () => {
     test("Random attack on enemy without attacking twice same coords", () => {

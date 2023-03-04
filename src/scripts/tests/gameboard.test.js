@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import Gameboard from "../gameboard.js";
-import Ship from "../ship.js";
+import Gameboard from "../factories/gameboard.js";
+import Ship from "../factories/ship.js";
 
 describe("Gameboard factory", () => {
     test("Place ship horizontally", () => {

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import Ship from "../ship";
+import Ship from "../factories/ship";
 
 describe("Ship factory", () => {
     test("hit function", () => {
