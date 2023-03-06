@@ -1,9 +1,9 @@
 const Ship = (length) => {
     let hitCounter = 0;
     let direction = "hor";
+    const coords = [];
 
     const getLength = () => length;
-
     const getDirection = () => direction;
 
     const changeDirection = () => {
@@ -18,7 +18,7 @@ const Ship = (length) => {
 
     const isSunk = () => (hitCounter >= length ? true : false);
 
-    return { getLength, getDirection, changeDirection, hit, isSunk };
+    return { getLength, getDirection, coords, changeDirection, hit, isSunk };
 };
 
 export default Ship;

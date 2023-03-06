@@ -7,6 +7,7 @@ const Gameboard = () => {
     const fleet = [];
 
     const getBoard = () => board;
+    const getFleet = () => fleet;
 
     const getCoords = (x, y, i, direction) => {
         let hor;
@@ -59,6 +60,7 @@ const Gameboard = () => {
 
         for (let i = 0; i < length; i++) {
             const [hor, ver] = getCoords(x, y, i, direction);
+            ship.coords.push([hor, ver]);
             board[hor][ver] = ship;
         }
         fleet.push(ship);
@@ -91,6 +93,7 @@ const Gameboard = () => {
 
     return {
         getBoard,
+        getFleet,
         checkShipPlacement,
         checkShipCollision,
         placeShip,

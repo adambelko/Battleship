@@ -1,3 +1,9 @@
-import test from "./scripts/dom/gameController.js";
+import { boardWrapper, boardLeft, DOM } from "./scripts/dom/gameboardDOM.js";
+import Game from "./scripts/factories/game.js";
 
-test();
+const dom = DOM();
+const game = Game();
+
+dom.renderGameboard(boardLeft, boardWrapper);
+game.populateBoard();
+dom.renderFleet(game.boardOne);
