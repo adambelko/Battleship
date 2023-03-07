@@ -1,7 +1,6 @@
 const boardWrapper = document.querySelector(".main__board-wrapper");
-const boardLeft = document.querySelector(".main__board--left");
-// const boardRight = document.querySelector(".main__board--right");
-// const boardLeftCells = document.querySelectorAll(".main__board-cell");
+const boardOneEl = document.querySelector(".main__board--left");
+const boardTwoEl = document.querySelector(".main__board--right");
 
 const DOM = () => {
     const renderGameboard = (board, parent) => {
@@ -17,15 +16,21 @@ const DOM = () => {
         parent.appendChild(board);
     };
 
-    const renderFleet = (board) => {
+    const renderFleet = (board, num) => {
         const fleet = board.getFleet();
         let boardCell;
         for (let i = 0; i < fleet.length; i++) {
             for (let j = 0; j < fleet[i].coords.length; j++) {
                 const [x, y] = fleet[i].coords[j];
-                boardCell = document.querySelector(
-                    `[data-x="${x}"][data-y="${y}"]`
-                );
+                if (num === "left") {
+                    boardCell = document.querySelector(
+                        `.main__board--left > [data-x="${x}"][data-y="${y}"]`
+                    );
+                } else {
+                    boardCell = document.querySelector(
+                        `.main__board--right > [data-x="${x}"][data-y="${y}"]`
+                    );
+                }
                 boardCell.classList.add("main__board-ship");
             }
         }
@@ -34,4 +39,4 @@ const DOM = () => {
     return { renderGameboard, renderFleet };
 };
 
-export { boardWrapper, boardLeft, DOM };
+export { boardWrapper, boardOneEl, boardTwoEl, DOM };
