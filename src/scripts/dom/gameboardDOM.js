@@ -1,9 +1,7 @@
-const boardWrapper = document.querySelector(".main__board-wrapper");
-const boardOneEl = document.querySelector(".main__board--left");
-const boardTwoEl = document.querySelector(".main__board--right");
+import el from "./elements.js";
 
 const DOM = () => {
-    const renderGameboard = (board, parent) => {
+    const renderGameboard = (board) => {
         for (let y = 0; y < 10; y++) {
             for (let x = 0; x < 10; x++) {
                 const cell = document.createElement("div");
@@ -13,30 +11,53 @@ const DOM = () => {
                 board.appendChild(cell);
             }
         }
-        parent.appendChild(board);
+        el.boardWrapper.appendChild(board);
     };
 
-    const renderFleet = (board, num) => {
+    const renderFleet = (board, cells) => {
         const fleet = board.getFleet();
-        let boardCell;
+        let shipCell;
         for (let i = 0; i < fleet.length; i++) {
             for (let j = 0; j < fleet[i].coords.length; j++) {
                 const [x, y] = fleet[i].coords[j];
-                if (num === "left") {
-                    boardCell = document.querySelector(
-                        `.main__board--left > [data-x="${x}"][data-y="${y}"]`
-                    );
-                } else {
-                    boardCell = document.querySelector(
-                        `.main__board--right > [data-x="${x}"][data-y="${y}"]`
-                    );
-                }
-                boardCell.classList.add("main__board-ship");
+                shipCell = document.querySelector(
+                    `.${cells.className} > [data-x="${x}"][data-y="${y}"]`
+                );
+
+                shipCell.classList.add("main__board-ship");
             }
         }
     };
 
-    return { renderGameboard, renderFleet };
+    // Event listeners for gameboard cells
+    const boardEventListeners = (side) => {
+        let boardCell;
+        if (side === "left") {
+            boardCell = document.querySelectorAll(
+                ".main__board--left > .main__board-cell"
+            );
+
+            boardCell.forEach((cell) => {
+                cell.addEventListener("click", (e) => {
+                    e.target.classList.add("main__board-ship");
+                    return boardCell;
+                });
+            });
+        } else {
+            boardCell = document.querySelectorAll(
+                ".main__board--right > .main__board-cell"
+            );
+
+            boardCell.forEach((cell) => {
+                cell.addEventListener("click", (e) => {
+                    e.target.classList.add("main__board-ship");
+                    return boardCell;
+                });
+            });
+        }
+    };
+
+    return { renderGameboard, renderFleet, boardEventListeners };
 };
 
-export { boardWrapper, boardOneEl, boardTwoEl, DOM };
+export default DOM;

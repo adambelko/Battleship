@@ -22,6 +22,8 @@ const Game = () => {
         boardTwo.placeShip(enemyShip2, 5, 2);
     };
 
+    const attack = () => {};
+
     return { populateBoard, boardOne, boardTwo };
 };
 
