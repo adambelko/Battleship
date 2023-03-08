@@ -28,42 +28,21 @@ const DOM = () => {
         }
     };
 
-    // Event listeners for gameboard cells
-    // const boardEventListeners = (boardCells) => {
-    //     console.log(boardCells);
-    //     boardCells.forEach((cell) => {
-    //         cell.addEventListener("click", (e) => {
-    //             console.log("hey");
-    //             e.target.classList.add("main__board-ship");
-    //             // return boardCells;
-    //         });
-    //     });
-    // };
+    // Change background of gameboard cells after attack is received
+    const boardEventListeners = (board, boardCells) => {
+        boardCells.forEach((cell) => {
+            cell.addEventListener("click", (e) => changeBoardCellBg(e, board));
+        });
+    };
 
-    const boardEventListeners = (side) => {
-        let boardCell;
-        if (side === "left") {
-            boardCell = document.querySelectorAll(
-                ".main__board--left > .main__board-cell"
-            );
-
-            boardCell.forEach((cell) => {
-                cell.addEventListener("click", (e) => {
-                    e.target.classList.add("main__board-ship");
-                    return boardCell;
-                });
-            });
+    const changeBoardCellBg = (e, board) => {
+        const x = e.target.dataset.x;
+        const y = e.target.dataset.y;
+        const gameboard = board.getBoard();
+        if (gameboard[x][y] === "miss") {
+            e.target.classList.add("main__board-miss");
         } else {
-            boardCell = document.querySelectorAll(
-                ".main__board--right > .main__board-cell"
-            );
-
-            boardCell.forEach((cell) => {
-                cell.addEventListener("click", (e) => {
-                    e.target.classList.add("main__board-ship");
-                    return boardCell;
-                });
-            });
+            e.target.classList.add("main__board-ship--hit");
         }
     };
 

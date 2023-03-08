@@ -22,9 +22,20 @@ const Game = () => {
         boardTwo.placeShip(enemyShip2, 5, 2);
     };
 
-    const attack = () => {};
+    // Event listeners for gameboard cells
+    const boardEventListeners = (boardCells) => {
+        boardCells.forEach((cell) => {
+            cell.addEventListener("click", attack);
+        });
+    };
 
-    return { populateBoard, boardOne, boardTwo };
+    const attack = (e) => {
+        const x = e.target.dataset.x;
+        const y = e.target.dataset.y;
+        boardTwo.receiveAttack(x, y);
+    };
+
+    return { populateBoard, boardEventListeners, boardOne, boardTwo };
 };
 
 export default Game;

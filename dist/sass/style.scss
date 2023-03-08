@@ -3,15 +3,17 @@
     padding: 0;
 }
 
-$light-grey: #fafafa;
-$ship-bg: #808080;
+$bg: #fafafa;
+$ship-bg: #6b6a6a;
+$ship-miss: #00d500;
+$ship-hit: #f12f12;
 
 html {
     font-family: 'Pragati Narrow', sans-serif;
     font-size: 62.5%;
     box-sizing: border-box;
     height: 100%;
-    background: $light-grey;
+    background: $bg;
 }
 
 header {
@@ -61,4 +63,12 @@ main {
 
 .main__board-ship {
     background: $ship-bg;
+}
+
+.main__board-ship--hit {
+    background: $ship-hit;
+}
+
+.main__board-miss {
+    background: $ship-miss;
 }

@@ -56,7 +56,15 @@ main {
 }
 
 .main__board-ship {
-  background: #808080;
+  background: #6b6a6a;
+}
+
+.main__board-ship--hit {
+  background: #f12f12;
+}
+
+.main__board-miss {
+  background: #00d500;
 }
 
 /*# sourceMappingURL=style.css.map */
