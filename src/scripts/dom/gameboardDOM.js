@@ -23,13 +23,23 @@ const DOM = () => {
                 shipCell = document.querySelector(
                     `.${cells.className} > [data-x="${x}"][data-y="${y}"]`
                 );
-
                 shipCell.classList.add("main__board-ship");
             }
         }
     };
 
     // Event listeners for gameboard cells
+    // const boardEventListeners = (boardCells) => {
+    //     console.log(boardCells);
+    //     boardCells.forEach((cell) => {
+    //         cell.addEventListener("click", (e) => {
+    //             console.log("hey");
+    //             e.target.classList.add("main__board-ship");
+    //             // return boardCells;
+    //         });
+    //     });
+    // };
+
     const boardEventListeners = (side) => {
         let boardCell;
         if (side === "left") {

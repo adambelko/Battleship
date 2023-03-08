@@ -10,4 +10,6 @@ dom.renderGameboard(el.boardTwo);
 game.populateBoard();
 dom.renderFleet(game.boardOne, el.boardOne);
 dom.renderFleet(game.boardTwo, el.boardTwo);
+// dom.boardEventListeners(el.boardOneCells);
+// dom.boardEventListeners(el.boardTwoCells);
 dom.boardEventListeners("left");
