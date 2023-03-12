@@ -29,9 +29,12 @@ describe("Gameboard factory", () => {
 
     test("Check if ship is placed within the board", () => {
         const board = Gameboard();
+        const ship = Ship(3);
         // checkShipPlacement(x, y, length, direction)
         expect(board.checkShipPlacement(7, 0, 3, "hor")).toBeFalsy();
         expect(board.checkShipPlacement(6, 0, 3, "hor")).toBeTruthy();
+        expect(board.placeShip(ship, 7, 4)).toBeFalsy();
+        expect(board.placeShip(ship, 6, 4)).toBeTruthy();
     });
 
     test("Check if ship collides whith another ship", () => {

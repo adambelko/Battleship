@@ -6,20 +6,18 @@ const Game = () => {
     const boardOne = Gameboard();
     const boardTwo = Gameboard();
 
-    const playerOne = Player(boardOne);
-    const playerTwo = Player(boardTwo);
+    const playerOne = Player();
+    const playerTwo = Player();
 
-    const populateBoard = () => {
-        const myShip1 = Ship(3);
-        const myShip2 = Ship(4);
-        boardOne.placeShip(myShip1, 0, 2);
-        myShip2.changeDirection();
-        boardOne.placeShip(myShip2, 4, 4);
+    const autoPlaceFleet = (board, fleet) => {
+        boardOne.autoPlaceFleet(board, fleet);
+    };
 
-        const enemyShip1 = Ship(3);
-        const enemyShip2 = Ship(4);
-        boardTwo.placeShip(enemyShip1, 3, 5);
-        boardTwo.placeShip(enemyShip2, 5, 2);
+    const resetFleet = (board) => {
+        board = board.getBoard();
+        board = Array(10)
+            .fill(null)
+            .map(() => Array(10).fill(null));
     };
 
     // Event listeners for gameboard cells
@@ -33,9 +31,19 @@ const Game = () => {
         const x = e.target.dataset.x;
         const y = e.target.dataset.y;
         boardTwo.receiveAttack(x, y);
+        if (boardTwo.allShipsSunk()) {
+            console.log("all ships sunk");
+        }
     };
 
-    return { populateBoard, boardEventListeners, boardOne, boardTwo };
+    return {
+        autoPlaceFleet,
+        resetFleet,
+        boardEventListeners,
+        boardOne,
+        boardTwo,
+        playerOne,
+    };
 };
 
 export default Game;

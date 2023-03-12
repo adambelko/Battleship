@@ -1,7 +1,9 @@
 const el = {
-    boardWrapper: document.querySelector(".main__board-wrapper"),
+    boardOneWrapper: document.querySelector(".main__board--left-wrapper"),
+    boardTwoWrapper: document.querySelector(".main__board--right-wrapper"),
     boardOne: document.querySelector(".main__board--left"),
     boardTwo: document.querySelector(".main__board--right"),
+    autoPlaceBtn: document.querySelector(".auto-place-btn"),
 
     boardOneCells() {
         return document.querySelectorAll(

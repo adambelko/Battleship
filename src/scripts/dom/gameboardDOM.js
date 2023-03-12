@@ -11,7 +11,12 @@ const DOM = () => {
                 board.appendChild(cell);
             }
         }
-        el.boardWrapper.appendChild(board);
+        if (board.classList.contains("main__board--left")) {
+            el.boardOneWrapper.appendChild(board);
+            el.boardOneWrapper.appendChild(el.autoPlaceBtn);
+        } else {
+            el.boardTwoWrapper.appendChild(board);
+        }
     };
 
     const renderFleet = (board, cells) => {

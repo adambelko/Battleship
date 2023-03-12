@@ -25,14 +25,12 @@ const Gameboard = () => {
 
     // Check if ship is placed within the gameboard squares
     const checkShipPlacement = (x, y, length, direction) => {
-        for (let i = 0; i < length; i++) {
-            if (direction === "hor" && x + length < 10) {
-                return true;
-            } else if (direction === "ver" && y + length < 10) {
-                return true;
-            } else {
-                return false;
-            }
+        if (direction === "hor" && x + length < 10) {
+            return true;
+        } else if (direction === "ver" && y + length < 10) {
+            return true;
+        } else {
+            return false;
         }
     };
 
@@ -41,7 +39,7 @@ const Gameboard = () => {
         for (let i = 0; i < length; i++) {
             const [hor, ver] = getCoords(x, y, i, direction);
 
-            if (board[hor][ver] !== null || board[hor][ver] !== null) {
+            if (board[hor][ver] !== null) {
                 return false;
             }
         }
@@ -52,11 +50,12 @@ const Gameboard = () => {
     const placeShip = (ship, x, y) => {
         const direction = ship.getDirection();
         const length = ship.getLength();
-        const valid1 = checkShipCollision(x, y, length, direction);
-        const valid2 = checkShipPlacement(x, y, length, direction);
 
-        if (!valid1) return;
-        if (!valid2) return;
+        const valid1 = checkShipPlacement(x, y, length, direction);
+        if (valid1 === false) return false;
+
+        const valid2 = checkShipCollision(x, y, length, direction);
+        if (valid2 === false) return false;
 
         for (let i = 0; i < length; i++) {
             const [hor, ver] = getCoords(x, y, i, direction);
@@ -64,6 +63,27 @@ const Gameboard = () => {
             board[hor][ver] = ship;
         }
         fleet.push(ship);
+        return true;
+    };
+
+    const autoPlaceFleet = (board, fleet) => {
+        fleet.forEach((ship) => autoPlaceShip(board, ship));
+    };
+
+    const autoPlaceShip = (board, ship) => {
+        const randomInt = () => Math.floor(Math.random() * 9);
+        // Generate two random numbers and compare it agains each other to
+        // randomly change direction of a ship
+        if (randomInt() < randomInt()) ship.changeDirection();
+        // Keep looping till placeShip returns true
+        const placeShip = () => board.placeShip(ship, randomInt(), randomInt());
+        while (true) {
+            let x = placeShip();
+            if (x === true) {
+                x;
+                break;
+            }
+        }
     };
 
     // Determine whether or not attack hit a ship, if yes send hit() fn
@@ -97,6 +117,7 @@ const Gameboard = () => {
         checkShipPlacement,
         checkShipCollision,
         placeShip,
+        autoPlaceFleet,
         receiveAttack,
         allShipsSunk,
     };
