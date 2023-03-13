@@ -73,10 +73,11 @@ const Gameboard = () => {
     const autoPlaceShip = (board, ship) => {
         const randomInt = () => Math.floor(Math.random() * 9);
         // Generate two random numbers and compare it agains each other to
-        // randomly change direction of a ship
+        // determine direction of a ship
         if (randomInt() < randomInt()) ship.changeDirection();
         // Keep looping till placeShip returns true
         const placeShip = () => board.placeShip(ship, randomInt(), randomInt());
+        // eslint-disable-next-line no-constant-condition
         while (true) {
             let x = placeShip();
             if (x === true) {

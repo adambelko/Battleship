@@ -1,6 +1,6 @@
-import DOM from "./scripts/dom/gameboardDOM.js";
-import Game from "./scripts/factories/game.js";
-import el from "./scripts/dom/elements.js";
+import DOM from "./ app/views/gameboardView.js";
+import Game from "./ app/factories/game.js";
+import el from "./ app/views/elements.js";
 
 const dom = DOM();
 const game = Game();
