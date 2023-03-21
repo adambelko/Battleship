@@ -68,6 +68,7 @@ main {
 
 .main__board-cell {
   border: 1px solid black;
+  background: #fafafa;
 }
 
 .main__board-ship {

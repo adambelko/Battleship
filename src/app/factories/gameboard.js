@@ -1,10 +1,10 @@
 const Gameboard = () => {
     // Create a board 10 x 10
-    const board = Array(10)
+    let board = Array(10)
         .fill(null)
         .map(() => Array(10).fill(null));
 
-    const fleet = [];
+    let fleet = [];
 
     const getBoard = () => board;
     const getFleet = () => fleet;
@@ -112,6 +112,16 @@ const Gameboard = () => {
         return true;
     };
 
+    const resetBoard = () => {
+        board = Array(10)
+            .fill(null)
+            .map(() => Array(10).fill(null));
+    };
+
+    const resetFleet = () => {
+        fleet = [];
+    };
+
     return {
         getBoard,
         getFleet,
@@ -121,6 +131,8 @@ const Gameboard = () => {
         autoPlaceFleet,
         receiveAttack,
         allShipsSunk,
+        resetBoard,
+        resetFleet,
     };
 };
 

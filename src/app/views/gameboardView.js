@@ -20,7 +20,9 @@ const DOM = () => {
     };
 
     const renderFleet = (board, cells) => {
-        const fleet = board.getFleet();
+        let fleet = board.getFleet();
+        if (fleet.length === 0) return;
+        console.log(fleet);
         let shipCell;
         for (let i = 0; i < fleet.length; i++) {
             for (let j = 0; j < fleet[i].coords.length; j++) {
@@ -31,6 +33,15 @@ const DOM = () => {
                 shipCell.classList.add("main__board-ship");
             }
         }
+    };
+
+    const resetFleet = () => {
+        const cells = el.boardOneCells();
+        cells.forEach((cell) => {
+            if (cell.classList.contains("main__board-ship")) {
+                cell.classList.remove("main__board-ship");
+            }
+        });
     };
 
     // Change background of gameboard cells after attack is received
@@ -51,7 +62,7 @@ const DOM = () => {
         }
     };
 
-    return { renderGameboard, renderFleet, boardEventListeners };
+    return { renderGameboard, renderFleet, resetFleet, boardEventListeners };
 };
 
 export default DOM;
