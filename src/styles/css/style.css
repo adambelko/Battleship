@@ -56,23 +56,65 @@ main {
   display: grid;
   grid-template-columns: repeat(10, 4rem);
   grid-template-rows: repeat(10, 4rem);
-  border: 1px solid black;
+  border: 0.4rem solid #5e5e5e;
 }
 
 .main__board--right {
   display: grid;
   grid-template-columns: repeat(10, 4rem);
   grid-template-rows: repeat(10, 4rem);
-  border: 1px solid black;
+  border: 0.4rem solid #5e5e5e;
 }
 
 .main__board-cell {
-  border: 1px solid black;
+  border: 0.1rem solid #5e5e5e;
   background: #fafafa;
 }
 
 .main__board-ship {
-  background: #6b6a6a;
+  background: #bae6fd;
+}
+
+.board-ship--hor-start {
+  border-top: 0.3rem solid #3e3e3e;
+  border-right: none;
+  border-bottom: 0.3rem solid #3e3e3e;
+  border-left: 0.3rem solid #3e3e3e;
+}
+
+.board-ship--hor-body {
+  border-top: 0.3rem solid #3e3e3e;
+  border-right: none;
+  border-bottom: 0.3rem solid #3e3e3e;
+  border-left: none;
+}
+
+.board-ship--hor-end {
+  border-top: 0.3rem solid #3e3e3e;
+  border-right: 0.3rem solid #3e3e3e;
+  border-bottom: 0.3rem solid #3e3e3e;
+  border-left: none;
+}
+
+.board-ship--ver-start {
+  border-top: 0.3rem solid #3e3e3e;
+  border-right: 0.3rem solid #3e3e3e;
+  border-bottom: none;
+  border-left: 0.3rem solid #3e3e3e;
+}
+
+.board-ship--ver-body {
+  border-top: none;
+  border-right: 0.3rem solid #3e3e3e;
+  border-bottom: none;
+  border-left: 0.3rem solid #3e3e3e;
+}
+
+.board-ship--ver-end {
+  border-top: none;
+  border-right: 0.3rem solid #3e3e3e;
+  border-bottom: 0.3rem solid #3e3e3e;
+  border-left: 0.3rem solid #3e3e3e;
 }
 
 .main__board-ship--hit {

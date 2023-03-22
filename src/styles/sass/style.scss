@@ -4,9 +4,12 @@
 }
 
 $bg: #fafafa;
-$ship-bg: #6b6a6a;
+$ship-bg: #bae6fd;
+$ship-border: 0.3rem solid #3e3e3e;
 $ship-miss: #00d500;
 $ship-hit: #f12f12;
+$grid-border: 0.4rem solid #5e5e5e;
+$grid-cell: 0.1rem solid #5e5e5e;
 
 html {
     font-family: 'Pragati Narrow', sans-serif;
@@ -62,23 +65,67 @@ main {
     display: grid;
     grid-template-columns: repeat(10, 4rem);
     grid-template-rows: repeat(10, 4rem);
-    border: 1px solid black;
+    border: $grid-border;
 }
 
 .main__board--right {
     display: grid;
     grid-template-columns: repeat(10, 4rem);
     grid-template-rows: repeat(10, 4rem);
-    border: 1px solid black;
+    border: $grid-border;
 }
 
 .main__board-cell {
-    border: 1px solid black;
+    border: $grid-cell;
     background: $bg;
 }
 
 .main__board-ship {
     background: $ship-bg;
+}
+
+// classes for horizontal ships
+.board-ship--hor-start {
+    border-top: $ship-border;
+    border-right: none;
+    border-bottom: $ship-border;
+    border-left: $ship-border;
+}
+
+.board-ship--hor-body {
+    border-top: $ship-border;
+    border-right: none;
+    border-bottom: $ship-border;
+    border-left: none;
+}
+
+.board-ship--hor-end {
+    border-top: $ship-border;
+    border-right: $ship-border;
+    border-bottom: $ship-border;
+    border-left: none;
+}
+
+// classes for vertical ships
+.board-ship--ver-start {
+    border-top: $ship-border;
+    border-right: $ship-border;
+    border-bottom: none;
+    border-left: $ship-border;
+}
+
+.board-ship--ver-body {
+    border-top: none;
+    border-right: $ship-border;
+    border-bottom: none;
+    border-left: $ship-border;
+}
+
+.board-ship--ver-end {
+    border-top: none;
+    border-right: $ship-border;
+    border-bottom: $ship-border;
+    border-left: $ship-border;
 }
 
 .main__board-ship--hit {

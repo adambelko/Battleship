@@ -50,7 +50,6 @@ const Gameboard = () => {
     const placeShip = (ship, x, y) => {
         const direction = ship.getDirection();
         const length = ship.getLength();
-
         const valid1 = checkShipPlacement(x, y, length, direction);
         if (valid1 === false) return false;
 

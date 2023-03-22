@@ -20,9 +20,7 @@ const DOM = () => {
     };
 
     const renderFleet = (board, cells) => {
-        let fleet = board.getFleet();
-        if (fleet.length === 0) return;
-        console.log(fleet);
+        const fleet = board.getFleet();
         let shipCell;
         for (let i = 0; i < fleet.length; i++) {
             for (let j = 0; j < fleet[i].coords.length; j++) {
@@ -31,6 +29,30 @@ const DOM = () => {
                     `.${cells.className} > [data-x="${x}"][data-y="${y}"]`
                 );
                 shipCell.classList.add("main__board-ship");
+                renderShipBorders(fleet, i, j, shipCell);
+            }
+        }
+    };
+
+    const renderShipBorders = (fleet, i, j, shipCell) => {
+        const shipDir = fleet[i].getDirection();
+        const length = fleet[i].coords.length;
+        if (shipDir === "hor") {
+            if (j === 0) {
+                shipCell.classList.add("board-ship--hor-start");
+            } else if (j !== length - 1) {
+                shipCell.classList.add("board-ship--hor-body");
+            } else {
+                shipCell.classList.add("board-ship--hor-end");
+            }
+            // vertical direction
+        } else {
+            if (j === 0) {
+                shipCell.classList.add("board-ship--ver-start");
+            } else if (j !== length - 1) {
+                shipCell.classList.add("board-ship--ver-body");
+            } else {
+                shipCell.classList.add("board-ship--ver-end");
             }
         }
     };
@@ -39,7 +61,7 @@ const DOM = () => {
         const cells = el.boardOneCells();
         cells.forEach((cell) => {
             if (cell.classList.contains("main__board-ship")) {
-                cell.classList.remove("main__board-ship");
+                cell.className = "main__board-cell";
             }
         });
     };

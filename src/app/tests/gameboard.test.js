@@ -41,7 +41,7 @@ describe("Gameboard factory", () => {
         const board = Gameboard();
         const ship = Ship(4);
         board.placeShip(ship, 0, 1);
-        // checkShipPlacement(x, y, length, direction)
+        // checkShipCollision(x, y, length, direction)
         expect(board.checkShipCollision(0, 1, 4, "hor")).toBeFalsy();
         expect(board.checkShipCollision(5, 1, 4, "hor")).toBeTruthy();
     });

@@ -40,6 +40,7 @@ const Game = () => {
         boardOne,
         boardTwo,
         playerOne,
+        playerTwo,
     };
 };
 

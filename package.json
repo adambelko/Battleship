@@ -7,7 +7,9 @@
   "scripts": {
     "test": "jest",
     "watch": "webpack --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "sass": "sass src/styles/sass/style.scss src/styles/css/style.css",
+    "sass-watch": "sass --watch src/styles/sass/style.scss src/styles/css/style.css"
   },
   "keywords": [],
   "author": "",
