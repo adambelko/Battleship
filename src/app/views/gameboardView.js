@@ -64,15 +64,6 @@ const DOM = () => {
         }
     };
 
-    const resetFleet = () => {
-        const cells = el.boardOneCells();
-        cells.forEach((cell) => {
-            if (cell.classList.contains("main__board-ship")) {
-                cell.className = "main__board-cell";
-            }
-        });
-    };
-
     // Event listener for receiving attacks
     const receiveAttack = (board, boardCells) => {
         boardCells.forEach((cell) => {
@@ -93,12 +84,27 @@ const DOM = () => {
         }
     };
 
+    const resetGameboard = (board) => {
+        board.forEach((cell) => {
+            cell.className = "main__board-cell";
+        });
+    };
+
+    const resetFleet = (board) => {
+        board.forEach((cell) => {
+            if (cell.classList.contains("main__board-ship")) {
+                cell.className = "main__board-cell";
+            }
+        });
+    };
+
     return {
         startGame,
         renderGameboard,
         renderFleet,
-        resetFleet,
         receiveAttack,
+        resetGameboard,
+        resetFleet,
     };
 };
 

@@ -13,14 +13,16 @@ const Game = () => {
         board.autoPlaceFleet(board, fleet);
     };
 
+    const startGame = () => {
+        if (boardOne.getFleet().length === 0) return;
+        if (boardTwo.getFleet().length >= 5) return;
+        autoPlaceFleet(boardTwo, playerTwo.createFleet());
+        boardEventListeners(el.boardTwoCells());
+    };
+
     const resetFleet = (board) => {
         board.resetBoard();
         board.resetFleet();
-    };
-
-    const startGame = () => {
-        autoPlaceFleet(boardTwo, playerTwo.createFleet());
-        boardEventListeners(el.boardTwoCells());
     };
 
     // Event listeners for gameboard cells
@@ -41,9 +43,8 @@ const Game = () => {
 
     return {
         autoPlaceFleet,
-        resetFleet,
         startGame,
-        boardEventListeners,
+        resetFleet,
         boardOne,
         boardTwo,
         playerOne,

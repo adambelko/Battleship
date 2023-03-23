@@ -5,26 +5,42 @@ import el from "./app/views/elements.js";
 const dom = DOM();
 const game = Game();
 
-dom.renderGameboard(el.boardOne);
-dom.renderGameboard(el.boardTwo);
+const renderGameboard = () => {
+    dom.renderGameboard(el.boardOne);
+    dom.renderGameboard(el.boardTwo);
+};
+
+const autoPlace = () => {
+    el.autoPlaceBtn.addEventListener("click", () => {
+        if (game.boardTwo.getFleet().length >= 5) return;
+        game.resetFleet(game.boardOne);
+        game.autoPlaceFleet(game.boardOne, game.playerOne.createFleet());
+
+        dom.resetFleet(el.boardOneCells());
+        dom.renderFleet(game.boardOne, el.boardOne);
+    });
+};
 
 const startGame = () => {
     el.startGameBtn.addEventListener("click", () => {
         game.startGame();
+
         dom.startGame(game.boardTwo);
         dom.renderFleet(game.boardTwo, el.boardTwo); // for develop only
     });
 };
 
-const autoPlaceFleetEventListener = () => {
-    el.autoPlaceBtn.addEventListener("click", () => {
+const resetGame = () => {
+    el.resetBtn.addEventListener("click", () => {
         game.resetFleet(game.boardOne);
-        dom.resetFleet();
+        game.resetFleet(game.boardTwo);
 
-        game.autoPlaceFleet(game.boardOne, game.playerOne.createFleet());
-        dom.renderFleet(game.boardOne, el.boardOne);
+        dom.resetGameboard(el.boardOneCells());
+        dom.resetGameboard(el.boardTwoCells());
     });
 };
 
-autoPlaceFleetEventListener();
+renderGameboard();
+autoPlace();
 startGame();
+resetGame();
