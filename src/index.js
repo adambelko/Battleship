@@ -8,7 +8,7 @@ const game = Game();
 dom.renderGameboard(el.boardOne);
 dom.renderGameboard(el.boardTwo);
 
-game.autoPlaceFleet(game.boardTwo, game.playerTwo.createFleet());
+// game.autoPlaceFleet(game.boardTwo, game.playerTwo.createFleet());
 
 game.boardEventListeners(el.boardTwoCells());
 dom.boardEventListeners(game.boardTwo, el.boardTwoCells());

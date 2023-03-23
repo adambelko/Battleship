@@ -4,7 +4,7 @@
 }
 
 html {
-  font-family: "Pragati Narrow", sans-serif;
+  font-family: "Secular One", sans-serif;
   font-size: 62.5%;
   box-sizing: border-box;
   height: 100%;
@@ -14,8 +14,8 @@ html {
 header {
   display: flex;
   justify-content: center;
-  font-size: 3.6rem;
-  margin-top: 3rem;
+  font-size: 3.8rem;
+  margin-top: 5rem;
 }
 
 .main__text-instructions {
@@ -28,6 +28,7 @@ header {
 main {
   display: flex;
   flex-direction: column;
+  margin-top: 5rem;
 }
 
 .main__board-wrapper {
@@ -37,22 +38,48 @@ main {
   gap: 7rem;
 }
 
-.main__board--left-wrapper {
+.main__board--left-wrapper,
+.main__board--right-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.auto-place-btn {
+.button-wrapper {
   display: flex;
-  font-size: 2rem;
-  margin-top: 2rem;
-  padding: 1.2rem;
-  border: 0.2rem solid black;
-  border-radius: 0.4rem;
+  width: 40rem;
+  justify-content: space-around;
 }
 
-.main__board--left {
+.auto-place-btn,
+.reset-btn,
+.start-game-btn {
+  display: flex;
+  background-color: #bae6fd;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  width: 14rem;
+  justify-content: center;
+  padding: 1.5rem 0rem 1.5rem 0rem;
+  border: 0.3rem solid black;
+  border-radius: 1rem;
+}
+.auto-place-btn:hover,
+.reset-btn:hover,
+.start-game-btn:hover {
+  background-color: #95d7fb;
+}
+
+.start-game-btn {
+  background-color: #4ade80;
+}
+.start-game-btn:hover {
+  background-color: #22c55e;
+}
+
+.main__board--left,
+.main__board--right {
   display: grid;
   grid-template-columns: repeat(10, 4rem);
   grid-template-rows: repeat(10, 4rem);

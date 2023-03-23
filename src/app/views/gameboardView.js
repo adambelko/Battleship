@@ -13,9 +13,12 @@ const DOM = () => {
         }
         if (board.classList.contains("main__board--left")) {
             el.boardOneWrapper.appendChild(board);
-            el.boardOneWrapper.appendChild(el.autoPlaceBtn);
+            el.boardOneWrapper.appendChild(el.btnWrapper);
+            el.btnWrapper.appendChild(el.autoPlaceBtn);
+            el.btnWrapper.appendChild(el.resetBtn);
         } else {
             el.boardTwoWrapper.appendChild(board);
+            el.boardTwoWrapper.appendChild(el.startGameBtn);
         }
     };
 
