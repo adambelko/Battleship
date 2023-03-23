@@ -1,5 +1,6 @@
 import Gameboard from "./gameboard.js";
 import Player from "./player.js";
+import el from "../views/elements.js";
 
 const Game = () => {
     const boardOne = Gameboard();
@@ -9,12 +10,17 @@ const Game = () => {
     const playerTwo = Player();
 
     const autoPlaceFleet = (board, fleet) => {
-        boardOne.autoPlaceFleet(board, fleet);
+        board.autoPlaceFleet(board, fleet);
     };
 
     const resetFleet = (board) => {
         board.resetBoard();
         board.resetFleet();
+    };
+
+    const startGame = () => {
+        autoPlaceFleet(boardTwo, playerTwo.createFleet());
+        boardEventListeners(el.boardTwoCells());
     };
 
     // Event listeners for gameboard cells
@@ -36,6 +42,7 @@ const Game = () => {
     return {
         autoPlaceFleet,
         resetFleet,
+        startGame,
         boardEventListeners,
         boardOne,
         boardTwo,

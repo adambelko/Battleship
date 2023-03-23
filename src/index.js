@@ -8,10 +8,13 @@ const game = Game();
 dom.renderGameboard(el.boardOne);
 dom.renderGameboard(el.boardTwo);
 
-// game.autoPlaceFleet(game.boardTwo, game.playerTwo.createFleet());
-
-game.boardEventListeners(el.boardTwoCells());
-dom.boardEventListeners(game.boardTwo, el.boardTwoCells());
+const startGame = () => {
+    el.startGameBtn.addEventListener("click", () => {
+        game.startGame();
+        dom.startGame(game.boardTwo);
+        dom.renderFleet(game.boardTwo, el.boardTwo); // for develop only
+    });
+};
 
 const autoPlaceFleetEventListener = () => {
     el.autoPlaceBtn.addEventListener("click", () => {
@@ -24,3 +27,4 @@ const autoPlaceFleetEventListener = () => {
 };
 
 autoPlaceFleetEventListener();
+startGame();

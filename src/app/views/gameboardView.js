@@ -1,6 +1,10 @@
 import el from "./elements.js";
 
 const DOM = () => {
+    const startGame = (boardTwo) => {
+        receiveAttack(boardTwo, el.boardTwoCells());
+    };
+
     const renderGameboard = (board) => {
         for (let y = 0; y < 10; y++) {
             for (let x = 0; x < 10; x++) {
@@ -69,14 +73,16 @@ const DOM = () => {
         });
     };
 
-    // Change background of gameboard cells after attack is received
-    const boardEventListeners = (board, boardCells) => {
+    // Event listener for receiving attacks
+    const receiveAttack = (board, boardCells) => {
         boardCells.forEach((cell) => {
-            cell.addEventListener("click", (e) => changeBoardCellBg(e, board));
+            cell.addEventListener("click", (e) =>
+                renderReceivedAttack(e, board)
+            );
         });
     };
 
-    const changeBoardCellBg = (e, board) => {
+    const renderReceivedAttack = (e, board) => {
         const x = e.target.dataset.x;
         const y = e.target.dataset.y;
         const gameboard = board.getBoard();
@@ -87,7 +93,13 @@ const DOM = () => {
         }
     };
 
-    return { renderGameboard, renderFleet, resetFleet, boardEventListeners };
+    return {
+        startGame,
+        renderGameboard,
+        renderFleet,
+        resetFleet,
+        receiveAttack,
+    };
 };
 
 export default DOM;
