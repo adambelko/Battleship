@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Raleway&family=Roboto:wght@400;700&family=Secular+One&display=swap" rel="stylesheet">    <script src="main.js" defer></script>
     <link rel="stylesheet" href="../src/styles/css/style.css">
     <title>Battleship</title>
 </head>
 <body>
-    <header><h1>Battleship</h1></header>
+    <header><h1>- Battleship -</h1></header>
     <main>
-        <div class="main__text-instructions">Some instructions goes here</div>
         <div class="main__board-wrapper">
             <div class="main__board--left-wrapper">
                 <div class="main__board--left"></div>
-                <button class="auto-place-btn">Auto Place Fleet</button>
+                <div class="button-wrapper">
+                    <button class="auto-place-btn">Auto Place</button>
+                    <button class="reset-btn">Reset</button>
+                </div>
             </div>
             <div class="main__board--right-wrapper">
                 <div class="main__board--right"></div>
+                <button class="start-game-btn">Start Game</button>
             </div>
         </div>
     </main>
