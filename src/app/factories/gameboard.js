@@ -78,9 +78,9 @@ const Gameboard = () => {
         const placeShip = () => board.placeShip(ship, randomInt(), randomInt());
         // eslint-disable-next-line no-constant-condition
         while (true) {
-            let x = placeShip();
-            if (x === true) {
-                x;
+            let ship = placeShip();
+            if (ship === true) {
+                ship;
                 break;
             }
         }

@@ -1,8 +1,15 @@
 import el from "./elements.js";
 
 const DOM = () => {
-    const startGame = (boardTwo) => {
-        receiveAttack(boardTwo, el.boardTwoCells());
+    const gameLoop = (boardOne, boardTwo) => {
+        let counter = 3;
+        if (counter % 2 == 0) {
+            receiveAttack(boardOne, el.boardTwoCells());
+            counter++;
+        } else {
+            receiveAttack(boardTwo, el.boardTwoCells());
+            counter++;
+        }
     };
 
     const renderGameboard = (board) => {
@@ -99,7 +106,7 @@ const DOM = () => {
     };
 
     return {
-        startGame,
+        gameLoop,
         renderGameboard,
         renderFleet,
         receiveAttack,
