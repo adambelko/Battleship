@@ -9,7 +9,7 @@ describe("Player factory", () => {
         const enemy = Player(board);
         const ship = Ship(5);
         board.placeShip(ship, 2, 3);
-        const attack = () => enemy.randomPlay();
+        const attack = () => enemy.randomAttack();
         while (attack === "null" || attack === false) {
             expect(attack).toBeTruthy;
         }

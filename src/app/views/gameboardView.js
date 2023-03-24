@@ -1,17 +1,6 @@
 import el from "./elements.js";
 
-const DOM = () => {
-    const gameLoop = (boardOne, boardTwo) => {
-        let counter = 3;
-        if (counter % 2 == 0) {
-            receiveAttack(boardOne, el.boardTwoCells());
-            counter++;
-        } else {
-            receiveAttack(boardTwo, el.boardTwoCells());
-            counter++;
-        }
-    };
-
+const views = (() => {
     const renderGameboard = (board) => {
         for (let y = 0; y < 10; y++) {
             for (let x = 0; x < 10; x++) {
@@ -72,13 +61,13 @@ const DOM = () => {
     };
 
     // Event listener for receiving attacks
-    const receiveAttack = (board, boardCells) => {
-        boardCells.forEach((cell) => {
-            cell.addEventListener("click", (e) =>
-                renderReceivedAttack(e, board)
-            );
-        });
-    };
+    // const waitForEnemyAttack = (board, boardCells) => {
+    //     boardCells.forEach((cell) => {
+    //         cell.addEventListener("click", (e) =>
+    //             renderReceivedAttack(e, board)
+    //         );
+    //     });
+    // };
 
     const renderReceivedAttack = (e, board) => {
         const x = e.target.dataset.x;
@@ -106,13 +95,12 @@ const DOM = () => {
     };
 
     return {
-        gameLoop,
         renderGameboard,
         renderFleet,
-        receiveAttack,
+        renderReceivedAttack,
         resetGameboard,
         resetFleet,
     };
-};
+})();
 
-export default DOM;
+export default views;
