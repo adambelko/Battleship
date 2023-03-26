@@ -11,8 +11,9 @@ import el from "./app/views/elements.js";
     });
 
     el.startGameBtn.addEventListener("click", () => {
+        if (!game.checkGameRules()) return;
         game.placeEnemyFleet();
-        game.gameLoop();
+        game.waitForEnemyAttack();
     });
 
     el.resetBtn.addEventListener("click", () => {

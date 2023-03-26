@@ -27,37 +27,46 @@ const Game = () => {
         board.autoPlaceFleet(board, fleet);
     };
 
+    // Check weather or not pressing auto-place/start game btn is allowed
+    const checkGameRules = () => {
+        if (boardOne.getFleet().length === 0) return false;
+        if (boardTwo.getFleet().length >= 5) return false;
+        return true;
+    };
+
     const placeEnemyFleet = () => {
-        if (boardOne.getFleet().length === 0) return;
-        if (boardTwo.getFleet().length >= 5) return;
         autoPlaceFleet(boardTwo, playerTwo.createFleet());
         views.renderFleet(boardTwo, el.boardTwo); // for develop only
     };
 
-    const gameLoop = () => {
-        if (boardOne.allShipsSunk()) return console.log("player two win");
-        if (boardTwo.allShipsSunk()) return console.log("player one win");
-
-        waitForEnemyAttack(boardTwo, el.boardTwoCells());
-    };
-
     // Event listeners for enemy (computer) gameboard cells
-    const waitForEnemyAttack = (board, boardCells) => {
-        boardCells.forEach((cell) => {
+    const waitForEnemyAttack = () => {
+        el.boardTwoCells().forEach((cell) => {
             cell.addEventListener("click", (e) => {
-                attack(e, board);
-                views.renderReceivedAttack(e, board);
+                if (!attackBoardTwo(e, boardTwo)) return;
+                // Computer attacks right after
+                attackBoardOne();
             });
         });
     };
 
-    const attack = (e, board) => {
+    const attackBoardOne = () => {
+        const [x, y] = playerTwo.randomAttack(boardOne);
+        views.renderReceivedAttackfromCoords([x, y], boardOne);
+    };
+
+    const attackBoardTwo = (e, board) => {
         const x = e.target.dataset.x;
         const y = e.target.dataset.y;
+        // Return false when same coords attacked twice or more
+        if (!board.receiveAttack(x, y)) return false;
         board.receiveAttack(x, y);
-        if (board.allShipsSunk()) {
-            console.log("all ships sunk");
-        }
+        views.renderReceivedAttack(e, board);
+
+        // if (board.allShipsSunk()) {
+        //     console.log("all ships sunk");
+        // }
+        return true;
     };
 
     const reset = () => {
@@ -77,9 +86,10 @@ const Game = () => {
         renderGameboard,
         autoPlace,
         autoPlaceFleet,
+        checkGameRules,
         placeEnemyFleet,
+        waitForEnemyAttack,
         reset,
-        gameLoop,
     };
 };
 

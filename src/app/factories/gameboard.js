@@ -80,19 +80,21 @@ const Gameboard = () => {
         while (true) {
             let ship = placeShip();
             if (ship === true) {
-                ship;
                 break;
             }
         }
     };
 
-    // Determine whether or not attack hit a ship, if yes send hit() fn
-    // to correct ship, otherwise record missed shot.
+    // If attack is beiing targeted at same coords return fasle,
+    // otherwise return true
     const receiveAttack = (x, y) => {
-        if (board[x][y] === null) {
-            return (board[x][y] = "miss");
-        } else if (board[x][y] === "hit") {
+        if (board[x][y] === "hit") {
             return false;
+        } else if (board[x][y] === "miss") {
+            return false;
+        } else if (board[x][y] === null) {
+            board[x][y] = "miss";
+            return true;
         } else {
             board[x][y].hit();
             board[x][y] = "hit";
@@ -100,8 +102,7 @@ const Gameboard = () => {
         }
     };
 
-    // Call isSunk() function on each ship and determine wheter or not all ships
-    // been sunk
+    // Determine if all ships within  a fleet have been sunk
     const allShipsSunk = () => {
         for (let i = 0; i < fleet.length; i++) {
             if (fleet[i].isSunk() === false) {

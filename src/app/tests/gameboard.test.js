@@ -50,7 +50,7 @@ describe("Gameboard factory", () => {
         const board = Gameboard();
         const ship = Ship(3);
         board.placeShip(ship, 0, 1);
-        expect(board.receiveAttack(3, 3)).toBe("miss");
+        expect(board.receiveAttack(3, 3)).toBeTruthy();
         expect(board.receiveAttack(0, 1)).toBeTruthy();
         expect(board.receiveAttack(0, 1)).toBeFalsy();
         expect(ship.isSunk()).toBeFalsy();

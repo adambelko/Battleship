@@ -60,15 +60,6 @@ const views = (() => {
         }
     };
 
-    // Event listener for receiving attacks
-    // const waitForEnemyAttack = (board, boardCells) => {
-    //     boardCells.forEach((cell) => {
-    //         cell.addEventListener("click", (e) =>
-    //             renderReceivedAttack(e, board)
-    //         );
-    //     });
-    // };
-
     const renderReceivedAttack = (e, board) => {
         const x = e.target.dataset.x;
         const y = e.target.dataset.y;
@@ -77,6 +68,22 @@ const views = (() => {
             e.target.classList.add("main__board-miss");
         } else {
             e.target.classList.add("main__board-ship--hit");
+        }
+    };
+
+    const renderReceivedAttackfromCoords = (coords, board) => {
+        const x = coords[0];
+        const y = coords[1];
+        const gameboard = board.getBoard();
+        const cells = el.boardOne;
+        const cell = document.querySelector(
+            `.${cells.className} > [data-x="${x}"][data-y="${y}"]`
+        );
+
+        if (gameboard[x][y] === "miss") {
+            cell.classList.add("main__board-miss");
+        } else {
+            cell.classList.add("main__board-ship--hit");
         }
     };
 
@@ -98,6 +105,7 @@ const views = (() => {
         renderGameboard,
         renderFleet,
         renderReceivedAttack,
+        renderReceivedAttackfromCoords,
         resetGameboard,
         resetFleet,
     };
