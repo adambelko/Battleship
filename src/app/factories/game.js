@@ -51,7 +51,6 @@ const Game = () => {
         if (!attackBoardTwo(e, boardTwo)) return;
         // Computer attacks right after
         attackBoardOne();
-        // Check for winner
         checkForWinner();
     };
 
@@ -71,8 +70,8 @@ const Game = () => {
     };
 
     const checkForWinner = () => {
-        if (boardOne.allShipsSunk()) console.log("Player two win!");
-        if (boardTwo.allShipsSunk()) console.log("Player one win!");
+        if (boardOne.allShipsSunk()) views.showWinner("boardTwo", reset());
+        if (boardTwo.allShipsSunk()) views.showWinner("boardOne", reset());
     };
 
     const reset = () => {

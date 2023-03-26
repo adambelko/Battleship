@@ -87,6 +87,24 @@ const views = (() => {
         }
     };
 
+    // Show modal announcing winner and asking if player wants to play again
+    const showWinner = (winner, reset) => {
+        el.modal.style.display = "block";
+        if (winner === "boardOne") {
+            el.modalText.textContent = "Woot! You sunk all ships!";
+        } else {
+            el.modalText.textContent = "No luck today...";
+        }
+
+        window.addEventListener("click", (e) => {
+            if (e.target === el.modal) el.modal.style.display = "none";
+        });
+        el.playAgainBtn.addEventListener("click", () => {
+            reset;
+            el.modal.style.display = "none";
+        });
+    };
+
     const resetGameboard = (board) => {
         board.forEach((cell) => {
             cell.className = "main__board-cell";
@@ -106,6 +124,7 @@ const views = (() => {
         renderFleet,
         renderReceivedAttack,
         renderReceivedAttackfromCoords,
+        showWinner,
         resetGameboard,
         resetFleet,
     };

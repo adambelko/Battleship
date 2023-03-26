@@ -10,7 +10,7 @@ import el from "./app/views/elements.js";
         game.autoPlace();
     });
 
-    el.startGameBtn.addEventListener("click", () => {
+    el.startGameBtn.addEventListener("click", function startGame() {
         if (!game.checkGameRules()) return;
         game.placeEnemyFleet();
         game.waitForEnemyAttack();

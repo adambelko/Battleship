@@ -3,12 +3,14 @@
     padding: 0;
 }
 
-$bg: #fafafa;
-$btn-bg: #bae6fd;
-$btn-bg-hover: #95d7fb;
+$page-bg: #fafafa;
+$blue-btn-bg: #bae6fd;
+$blue-btn-bg-hover: #95d7fb;
+$green-btn-bg: #4ade80;
+$green-btn-bg-hover: #22c55e;
 $ship-bg: #bae6fd;
 $ship-border: 0.3rem solid #3e3e3e;
-$ship-miss: #00d500;
+$ship-miss: #4ade80;
 $ship-hit: #f12f12;
 $grid-border: 0.4rem solid #5e5e5e;
 $grid-cell: 0.1rem solid #5e5e5e;
@@ -18,7 +20,7 @@ html {
     font-size: 62.5%;
     box-sizing: border-box;
     height: 100%;
-    background: $bg;
+    background: $page-bg;
 }
 
 header {
@@ -28,14 +30,11 @@ header {
     margin-top: 5rem;
 }
 
-// ----- MAIN ----- 
-.main__text-instructions {
-    display: flex;
-    justify-content: center;
-    font-size: 2.4rem;
-    margin-top: 3rem;
+button {
+    font-family: inherit;
 }
 
+// ----- MAIN ----- 
 main {
     display: flex;
     flex-direction: column;
@@ -47,6 +46,10 @@ main {
     justify-content: center;
     margin-top: 1rem;
     gap: 7rem;
+}
+
+.main__board-wrapper p {
+    font-size: 3rem;
 }
 
 .main__board--left-wrapper,
@@ -66,24 +69,27 @@ main {
 .reset-btn,
 .start-game-btn {
     display: flex;
-    background-color: $btn-bg;
-    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue-btn-bg;
+    height: 5.7rem;
+    width: 14rem;
+    font-size: 2.1rem;
     font-weight: bold;
     margin-top: 2rem;
-    width: 14rem;
-    justify-content: center;
-    padding: 1.5rem 0rem 1.5rem 0rem;
     border: 0.3rem solid black;
     border-radius: 1rem;
+    transition: all .2s ease-in-out;
         &:hover {
-            background-color: $btn-bg-hover;
+            background-color: $blue-btn-bg-hover;
+            transform: scale(1.06);
         }
 }
 
 .start-game-btn {
-    background-color: #4ade80;
+    background-color: $green-btn-bg;
         &:hover {
-            background-color: #22c55e;
+            background-color: $green-btn-bg-hover;
         }
 }
 
@@ -95,20 +101,14 @@ main {
     border: $grid-border;
 }
 
-.main__board--right {
-    display: grid;
-    grid-template-columns: repeat(10, 4rem);
-    grid-template-rows: repeat(10, 4rem);
-    border: $grid-border;
-}
-
 .main__board-cell {
     border: $grid-cell;
-    background: $bg;
+    background: $page-bg;
 }
 
 .main__board-ship {
     background: $ship-bg;
+    transition: .1s ease-in-out;
 }
 
 // classes for horizontal ships
@@ -157,8 +157,51 @@ main {
 
 .main__board-ship--hit {
     background: $ship-hit;
+    transition: all .1s ease-in-out;
 }
 
 .main__board-miss {
-    background: $ship-miss;
+    background-color: #4ade80;
+    transition: all .1s ease-in-out;
+}
+
+// Overlay popup
+.main__modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    transition: all 0.5s ease-in-out;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    font-size: 2.8rem;
+    align-items: center;
+    margin: 15% auto;
+    width: fit-content;
+    padding: 4rem;
+    border: 0.7rem solid black;
+    border-radius: 1rem;
+    background-color: #ddcbcb;
+}
+
+.modal-play-again-btn {
+    font-size: 3rem;
+    margin: 1rem;
+    width: 80%;
+    padding: 1rem;
+    border: 0.3rem solid black;
+    border-radius: 1rem;
+    background-color: $green-btn-bg;
+    transition: all .1s ease-in-out;
+    &:hover {
+        background-color: $green-btn-bg-hover;
+        transform: scale(1.03);
+    }
 }
