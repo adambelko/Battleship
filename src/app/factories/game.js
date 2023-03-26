@@ -42,12 +42,17 @@ const Game = () => {
     // Event listeners for enemy (computer) gameboard cells
     const waitForEnemyAttack = () => {
         el.boardTwoCells().forEach((cell) => {
-            cell.addEventListener("click", (e) => {
-                if (!attackBoardTwo(e, boardTwo)) return;
-                // Computer attacks right after
-                attackBoardOne();
-            });
+            cell.addEventListener("click", beginAttacks);
         });
+    };
+
+    const beginAttacks = (e) => {
+        // attack boardTwo if there's no attack on same coords twice
+        if (!attackBoardTwo(e, boardTwo)) return;
+        // Computer attacks right after
+        attackBoardOne();
+        // Check for winner
+        checkForWinner();
     };
 
     const attackBoardOne = () => {
@@ -58,15 +63,16 @@ const Game = () => {
     const attackBoardTwo = (e, board) => {
         const x = e.target.dataset.x;
         const y = e.target.dataset.y;
-        // Return false when same coords attacked twice or more
+        // Return false when same coords attacked twice
         if (!board.receiveAttack(x, y)) return false;
         board.receiveAttack(x, y);
         views.renderReceivedAttack(e, board);
-
-        // if (board.allShipsSunk()) {
-        //     console.log("all ships sunk");
-        // }
         return true;
+    };
+
+    const checkForWinner = () => {
+        if (boardOne.allShipsSunk()) console.log("Player two win!");
+        if (boardTwo.allShipsSunk()) console.log("Player one win!");
     };
 
     const reset = () => {
@@ -75,6 +81,10 @@ const Game = () => {
 
         views.resetGameboard(el.boardOneCells());
         views.resetGameboard(el.boardTwoCells());
+
+        el.boardTwoCells().forEach((cell) => {
+            cell.removeEventListener("click", beginAttacks);
+        });
     };
 
     const resetFleet = (board) => {
