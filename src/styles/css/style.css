@@ -91,7 +91,7 @@ main {
 }
 
 .main__board-cell {
-  border: 0.1rem solid #5e5e5e;
+  border: 0.1rem solid #949393;
   background: #fafafa;
 }
 
@@ -101,49 +101,49 @@ main {
 }
 
 .board-ship--hor-start {
-  border-top: 0.3rem solid #3e3e3e;
+  border-top: 0.3rem solid #272727;
   border-right: none;
-  border-bottom: 0.3rem solid #3e3e3e;
-  border-left: 0.3rem solid #3e3e3e;
+  border-bottom: 0.3rem solid #272727;
+  border-left: 0.3rem solid #272727;
 }
 
 .board-ship--hor-body {
-  border-top: 0.3rem solid #3e3e3e;
+  border-top: 0.3rem solid #272727;
   border-right: none;
-  border-bottom: 0.3rem solid #3e3e3e;
+  border-bottom: 0.3rem solid #272727;
   border-left: none;
 }
 
 .board-ship--hor-end {
-  border-top: 0.3rem solid #3e3e3e;
-  border-right: 0.3rem solid #3e3e3e;
-  border-bottom: 0.3rem solid #3e3e3e;
+  border-top: 0.3rem solid #272727;
+  border-right: 0.3rem solid #272727;
+  border-bottom: 0.3rem solid #272727;
   border-left: none;
 }
 
 .board-ship--ver-start {
-  border-top: 0.3rem solid #3e3e3e;
-  border-right: 0.3rem solid #3e3e3e;
+  border-top: 0.3rem solid #272727;
+  border-right: 0.3rem solid #272727;
   border-bottom: none;
-  border-left: 0.3rem solid #3e3e3e;
+  border-left: 0.3rem solid #272727;
 }
 
 .board-ship--ver-body {
   border-top: none;
-  border-right: 0.3rem solid #3e3e3e;
+  border-right: 0.3rem solid #272727;
   border-bottom: none;
-  border-left: 0.3rem solid #3e3e3e;
+  border-left: 0.3rem solid #272727;
 }
 
 .board-ship--ver-end {
   border-top: none;
-  border-right: 0.3rem solid #3e3e3e;
-  border-bottom: 0.3rem solid #3e3e3e;
-  border-left: 0.3rem solid #3e3e3e;
+  border-right: 0.3rem solid #272727;
+  border-bottom: 0.3rem solid #272727;
+  border-left: 0.3rem solid #272727;
 }
 
 .main__board-ship--hit {
-  background: #f12f12;
+  background: #f87171;
   transition: all 0.1s ease-in-out;
 }
 

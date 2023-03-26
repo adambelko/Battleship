@@ -22,15 +22,19 @@ const views = (() => {
         }
     };
 
+    const getShipCell = (x, y, cells) => {
+        return document.querySelector(
+            `.${cells.className} > [data-x="${x}"][data-y="${y}"]`
+        );
+    };
+
     const renderFleet = (board, cells) => {
         const fleet = board.getFleet();
         let shipCell;
         for (let i = 0; i < fleet.length; i++) {
             for (let j = 0; j < fleet[i].coords.length; j++) {
                 const [x, y] = fleet[i].coords[j];
-                shipCell = document.querySelector(
-                    `.${cells.className} > [data-x="${x}"][data-y="${y}"]`
-                );
+                shipCell = getShipCell(x, y, cells);
                 shipCell.classList.add("main__board-ship");
                 renderShipBorders(fleet, i, j, shipCell);
             }
@@ -60,10 +64,29 @@ const views = (() => {
         }
     };
 
+    // if ships gets sunk, render it's borders
+    const renderSunkShipBorders = (board) => {
+        const fleet = board.getFleet();
+        let x;
+        let y;
+        let shipCell;
+        for (let i = 0; i < fleet.length; i++) {
+            for (let j = 0; j < fleet[i].coords.length; j++) {
+                if (fleet[i].isSunk()) {
+                    x = fleet[i].coords[j][0];
+                    y = fleet[i].coords[j][1];
+                    shipCell = getShipCell(x, y, el.boardTwo);
+                    renderShipBorders(fleet, i, j, shipCell);
+                }
+            }
+        }
+    };
+
     const renderReceivedAttack = (e, board) => {
         const x = e.target.dataset.x;
         const y = e.target.dataset.y;
         const gameboard = board.getBoard();
+        renderSunkShipBorders(board);
         if (gameboard[x][y] === "miss") {
             e.target.classList.add("main__board-miss");
         } else {
@@ -99,6 +122,7 @@ const views = (() => {
         window.addEventListener("click", (e) => {
             if (e.target === el.modal) el.modal.style.display = "none";
         });
+
         el.playAgainBtn.addEventListener("click", () => {
             reset;
             el.modal.style.display = "none";

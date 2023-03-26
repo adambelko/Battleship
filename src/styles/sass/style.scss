@@ -9,11 +9,11 @@ $blue-btn-bg-hover: #95d7fb;
 $green-btn-bg: #4ade80;
 $green-btn-bg-hover: #22c55e;
 $ship-bg: #bae6fd;
-$ship-border: 0.3rem solid #3e3e3e;
+$ship-border: 0.3rem solid #272727;
 $ship-miss: #4ade80;
-$ship-hit: #f12f12;
+$ship-hit: #f87171;
 $grid-border: 0.4rem solid #5e5e5e;
-$grid-cell: 0.1rem solid #5e5e5e;
+$grid-cell: 0.1rem solid #949393;
 
 html {
     font-family: "Secular One", sans-serif;
@@ -165,7 +165,7 @@ main {
     transition: all .1s ease-in-out;
 }
 
-// Overlay popup
+// Modal 
 .main__modal {
     display: none;
     position: fixed;

@@ -27,7 +27,7 @@ const Game = () => {
         board.autoPlaceFleet(board, fleet);
     };
 
-    // Check weather or not pressing auto-place/start game btn is allowed
+    // Check weather or not pressing auto-place and start game btn is allowed
     const checkGameRules = () => {
         if (boardOne.getFleet().length === 0) return false;
         if (boardTwo.getFleet().length >= 5) return false;
@@ -36,7 +36,7 @@ const Game = () => {
 
     const placeEnemyFleet = () => {
         autoPlaceFleet(boardTwo, playerTwo.createFleet());
-        views.renderFleet(boardTwo, el.boardTwo); // for develop only
+        // views.renderFleet(boardTwo, el.boardTwo); // for develop only
     };
 
     // Event listeners for enemy (computer) gameboard cells
