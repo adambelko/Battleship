@@ -1,8 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 $page-bg: #fafafa;
 $blue-btn-bg: #bae6fd;
 $blue-btn-bg-hover: #95d7fb;
@@ -14,6 +9,11 @@ $ship-miss: #4ade80;
 $ship-hit: #f87171;
 $grid-border: 0.4rem solid #5e5e5e;
 $grid-cell: 0.1rem solid #949393;
+
+* {
+    margin: 0;
+    padding: 0;
+}
 
 html {
     font-family: "Secular One", sans-serif;
@@ -27,18 +27,14 @@ header {
     display: flex;
     justify-content: center;
     font-size: 3.8rem;
-    margin-top: 5rem;
-}
-
-button {
-    font-family: inherit;
+    margin-top: 2rem;
 }
 
 // ----- MAIN ----- 
 main {
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
+    margin-top: 4rem;
 }
 
 .main__board-wrapper {
@@ -46,10 +42,9 @@ main {
     justify-content: center;
     margin-top: 1rem;
     gap: 7rem;
-}
-
-.main__board-wrapper p {
-    font-size: 3rem;
+    p {
+        font-size: 3rem;
+    }
 }
 
 .main__board--left-wrapper,
@@ -57,6 +52,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+button {
+    font-family: inherit;
 }
 
 .button-wrapper {
