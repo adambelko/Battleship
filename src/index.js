@@ -1,3 +1,4 @@
+import "./styles/sass/style.scss";
 import Game from "./app/factories/game.js";
 import el from "./app/views/elements.js";
 
