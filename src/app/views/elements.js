@@ -9,7 +9,6 @@ const el = {
             ".main__board--left > .main__board-cell"
         );
     },
-
     boardTwoCells() {
         return document.querySelectorAll(
             ".main__board--right > .main__board-cell"

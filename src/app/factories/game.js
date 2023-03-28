@@ -27,7 +27,7 @@ const Game = () => {
         board.autoPlaceFleet(board, fleet);
     };
 
-    // Check weather or not pressing auto-place and start game btn is allowed
+    // Check whether or not pressing auto-place and start game btn is allowed
     const checkGameRules = () => {
         if (boardOne.getFleet().length === 0) return false;
         if (boardTwo.getFleet().length >= 5) return false;
@@ -62,7 +62,7 @@ const Game = () => {
     const attackBoardTwo = (e, board) => {
         const x = e.target.dataset.x;
         const y = e.target.dataset.y;
-        // Return false when same coords attacked twice
+        // Return false when same coords are attacked twice
         if (!board.receiveAttack(x, y)) return false;
         board.receiveAttack(x, y);
         views.renderReceivedAttack(e, board);
@@ -74,13 +74,12 @@ const Game = () => {
         if (boardTwo.allShipsSunk()) views.showWinner("boardOne", reset());
     };
 
+    // Completely reset both gameboards
     const reset = () => {
         resetFleet(boardOne);
         resetFleet(boardTwo);
-
         views.resetGameboard(el.boardOneCells());
         views.resetGameboard(el.boardTwoCells());
-
         el.boardTwoCells().forEach((cell) => {
             cell.removeEventListener("click", beginAttacks);
         });
@@ -94,7 +93,6 @@ const Game = () => {
     return {
         renderGameboard,
         autoPlace,
-        autoPlaceFleet,
         checkGameRules,
         placeEnemyFleet,
         waitForEnemyAttack,

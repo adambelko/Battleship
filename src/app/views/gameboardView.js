@@ -52,7 +52,6 @@ const views = (() => {
             } else {
                 shipCell.classList.add("board-ship--hor-end");
             }
-            // vertical direction
         } else {
             if (j === 0) {
                 shipCell.classList.add("board-ship--ver-start");
@@ -102,7 +101,6 @@ const views = (() => {
         const cell = document.querySelector(
             `.${cells.className} > [data-x="${x}"][data-y="${y}"]`
         );
-
         if (gameboard[x][y] === "miss") {
             cell.classList.add("main__board-miss");
         } else {
@@ -110,7 +108,7 @@ const views = (() => {
         }
     };
 
-    // Show modal announcing winner and asking if player wants to play again
+    // Show modal announcing winner and ask if player wants to play again
     const showWinner = (winner, reset) => {
         el.modal.style.display = "block";
         if (winner === "boardOne") {
@@ -124,7 +122,7 @@ const views = (() => {
         });
 
         el.playAgainBtn.addEventListener("click", () => {
-            reset;
+            reset; // game.reset()
             el.modal.style.display = "none";
         });
     };

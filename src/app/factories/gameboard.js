@@ -5,7 +5,6 @@ const Gameboard = () => {
         .map(() => Array(10).fill(null));
 
     let fleet = [];
-
     const getBoard = () => board;
     const getFleet = () => fleet;
 
